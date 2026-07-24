@@ -1,0 +1,23 @@
+# TCG store locator
+
+A community-driven platform for finding local tcg stores and events
+
+## Features
+
+- Searching Stores
+- Store Directory
+- Individual store pages
+- Responsive UI
+- Modern UI 
+
+## Built with
+
+- Node.js
+- Express
+- SQLite
+- Pug
+- CSS
+
+## Future Plans
+
+TBD 
