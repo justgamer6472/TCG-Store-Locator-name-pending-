@@ -1,0 +1,69 @@
+extends layout 
+
+block content 
+  section.form-page 
+    h1 Add a TCG Store 
+    p Add a local store to the Journey TCG directory.
+
+    form.store-form(action="/stores" method="POST")
+      label(for="name") Store name 
+      input(
+        type="text"
+        id="name"
+        name="name"
+        required 
+      )
+
+      label(for="address") Street address 
+      input(
+        type="text"
+        id="address"
+        name="address"
+        required 
+      )
+
+      label(for="city") City 
+      input(
+        type="text"
+        id="city"
+        name="city"
+        required 
+      )
+
+      label(for="state") State 
+      input(
+        type="text"
+        id="state"
+        name="state"
+        maxlength="2"
+        placeholder="NJ"
+        required 
+      )
+
+      label(for="zip") Zip code 
+      input(
+        type="text"
+        id="zip"
+        name="zip"
+        required
+      )
+
+      label(for="games") Games sold or played 
+      input(
+        type="text"
+        id="games"
+        name="games"
+        placeholder="Pokemon, One Piece, Magic"
+      )
+
+      label(for="description") Description 
+      textarea(
+        id="description"
+        name="description"
+        rows="5"
+        placeholder="Describe the store, atmosphere, products, and play space."
+      )
+
+      .form-actions 
+        button(type="submit") Add Store 
+        a(href="/") Cancel

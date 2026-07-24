@@ -1,0 +1,103 @@
+extends layout 
+
+block content 
+  section.hero 
+    .hero-content 
+      p.eyebrow Stores • Tournaments • Community 
+    
+      h1 
+        | Find Your Local 
+        span TCG Community 
+
+      p.hero-description 
+        | Discover card stores, tournaments, collectors, and competitive 
+        | players near you.
+
+      form.search-form(action="/" method="GET")
+        input(
+            type="text"
+            name="search"
+            value=search 
+            placeholder="Search by store, city, or game"
+            aria-label="Search stores"
+        )
+
+        button(type="submit") Search 
+
+      .hero-actions 
+        a.primary-button(href="#stores") Explore Stores 
+        a.secondary-button(href="/stores/new") Add a Store 
+
+      .stats 
+        .stat 
+          h2 20
+          p Stores 
+
+        .stat 
+          h2 15
+          p Players 
+
+        .stat
+          h2 2
+          p Weekly Events 
+
+        .stat 
+          h2 5
+          p Card Games
+
+  section.feature-section 
+    article.feature-card 
+      span.feature-icon 📍
+      h2 Local Stores 
+      p Find card shops and learn what games, products, and events they offer.
+
+    article.feature-card 
+      span.feature-icon 🏆
+      h2 Tournaments 
+      p Discover local tournaments, entry fees, schedules, and prize information.
+
+    article.feature-card 
+      span.feature-icon 👥
+      h2 Community 
+      p Read community feedback about stores, play spaces, staff, and events.
+
+    article.feature-card 
+      span.feature-icon ⭐
+      h2 Reviews 
+      p Read community feedback about stores, play spaces, staff, and events.
+
+  section.store-section#stores 
+    .section-heading 
+      div 
+        p.section-label Explore 
+        h2 Featured Stores 
+
+      a.text-link(href="/stores/new") Add Store →
+
+    if stores.length === 0
+      .empty-state 
+        h3 No stores have been added yet 
+        p Help build the Journey TCG community by adding the first local store.
+        a.primary-button(href="/stores/new") Add the First Store 
+
+    else 
+      .store-grid 
+        each store in stores 
+          article.store-card 
+            .store-card-top 
+              span.store-badge Local Store 
+
+            h3 
+              a(href=`/stores/${store.id}`)= store.name 
+
+            p.store-location 📍 #{store.city},  #{store.state}
+
+            if store.games 
+              p.store-games 
+                strong Games 
+                span= store.games 
+            
+            if store.description 
+              p.store-description= store.description
+
+            a.card-link(href=`/stores/${store.id}`) View Store →

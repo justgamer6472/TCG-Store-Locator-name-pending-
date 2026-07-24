@@ -1,0 +1,19 @@
+extends layout 
+
+block content 
+  article.store-page
+    a.back-link(href="/") ← Back to stores 
+
+    h1= store.name
+
+    p 
+      strong Address: 
+      |  #{store.address}, #{store.city}, #{store.state} #{store.zip}
+
+    if store.games 
+      p 
+        strong Games: 
+        |  #{store.games}
+
+    if store.description 
+      p= store.description
